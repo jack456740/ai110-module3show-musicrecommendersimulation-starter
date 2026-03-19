@@ -3,19 +3,14 @@
 ## 1. Model Name  
 
 Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
+Example: VibeCheck  
 
 ---
 
 ## 2. Intended Use  
 
-Describe what your recommender is designed to do and who it is for. 
 
-Prompts:  
-
-- What kind of recommendations does it generate  
-- What assumptions does it make about the user  
-- Is this for real users or classroom exploration  
+This recommender suggests songs based on a user’s preferences. It tries to find songs that match the user’s genre, mood, and energy level.
 
 ---
 
@@ -31,6 +26,9 @@ Prompts:
 - What changes did you make from the starter logic  
 
 Avoid code here. Pretend you are explaining the idea to a friend who does not program.
+The system uses a small dataset of about 20 songs stored in a CSV file. Each song includes features like genre, mood, energy, tempo, valence, danceability, and acousticness. The dataset is limited, so it does not cover all music styles equally.
+
+
 
 ---
 
@@ -45,17 +43,14 @@ Prompts:
 - Did you add or remove data  
 - Are there parts of musical taste missing in the dataset  
 
+Each song gets a score based on how well it matches the user’s preferences. The system gives points for matching genre and mood, and also adds points if the song’s energy is close to the user’s target. Songs are then ranked from highest score to lowest, and the top results are recommended.
+
 ---
 
-## 5. Strengths  
 
-Where does your system seem to work well  
+The system tends to favor genre too much, which can create a filter bubble. Songs from other genres are often ignored even if they match the mood or energy. The system also relies heavily on energy, which can cause songs with similar energy but different styles to rank highly.
 
-Prompts:  
 
-- User types for which it gives reasonable results  
-- Any patterns you think your scoring captures correctly  
-- Cases where the recommendations matched your intuition  
 
 ---
 
@@ -70,6 +65,9 @@ Prompts:
 - Cases where the system overfits to one preference  
 - Ways the scoring might unintentionally favor some users  
 
+I tested the system using different user profiles like “High-Energy Pop,” “Chill Lofi,” and “Deep Intense Rock.” I looked at the top 5 results and checked if they matched what a person would expect. I also changed the scoring weights to see how the rankings changed. One surprising result was that some songs appeared even when the mood did not match.
+
+
 ---
 
 ## 7. Evaluation  
@@ -82,8 +80,12 @@ Prompts:
 - What you looked for in the recommendations  
 - What surprised you  
 - Any simple tests or comparisons you ran  
+This system is designed as a simple simulation of how music recommenders work. It is meant for learning and experimentation. It should not be used for real-world music recommendations because the dataset is small and the logic is very basic.
 
-No need for numeric metrics unless you created some.
+## Ideas for Improvement
+- Add more songs and more diverse genres to the dataset  
+- Improve the scoring system to better balance genre, mood, and energy  
+- Allow partial matches (e.g., treat "indie pop" similar to "pop")  
 
 ---
 
